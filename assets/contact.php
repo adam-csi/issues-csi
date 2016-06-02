@@ -8,7 +8,7 @@ function isEmail($email) {
 if($_POST) {
 
     // Enter the email where you want to receive the message
-    $emailTo = 'contact.azmind@gmail.com';
+    $emailTo = 'bruce@clearscienceinc.com';
 
     $clientEmail = addslashes(trim($_POST['email']));
     $subject = addslashes(trim($_POST['subject']));
@@ -32,7 +32,7 @@ if($_POST) {
     if(isEmail($clientEmail) && $subject != '' && $message != '' && $antispam == '12') {
         // Send email
 		$headers = "From: " . $clientEmail . " <" . $clientEmail . ">" . "\r\n" . "Reply-To: " . $clientEmail;
-		mail($emailTo, $subject . " (bootstrap contact form tutorial)", $message, $headers);
+		mail($emailTo, $subject . "", $message, $headers);
     }
 
     echo json_encode($array);

@@ -10,7 +10,7 @@
 
         <!-- CSS -->
         <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:400,300,600">
-        <link rel="stylesheet" href="assets/css/bootstrap.min.css">
+        <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css">
 		    <link rel="stylesheet" href="assets/css/form-elements.css">
         <link rel="stylesheet" href="assets/css/style.css">
 
@@ -33,22 +33,21 @@
 
             <div class="inner-bg">
                 <div class="container">
-                    <div class="row">
+                      <div class="jumbotron col-med-6">
+                        <a href="#" class="thumbnail">
+                          <img src="assets/img/csi_logo_crop.png" alt="CSI Logo">
+                        </a>
                         <div class="col-sm-8 col-sm-offset-2 text">
-                          <h1>Clear Science Inc. Issues Form</h1>
-                            <div class="description">
-                            	<p>
-                                Please provide as much detail as possible about your issue.
-                            	</p>
-                            </div>
+                          <!-- <h1>Clear Science Inc.</h1> -->
+                          <h1 class="subheading"><small><span class="label label-default">Issues Form</span></small></h1>
                         </div>
-                    </div>
+                      </div>
+
                     <div class="row">
                         <div class="col-sm-6 col-sm-offset-3 form-box">
                         	<div class="form-top">
-                    			<h3>Contact us</h3>
-                        		<p>Fill in the form below to send us a message:</p>
-                            </div>
+                    			  <h3>Please provide us details about your issue.</h3>
+                          </div>
                             <div class="form-bottom contact-form">
 			                    <form role="form" action="assets/contact.php" method="post">
 			                    	<div class="form-group">
@@ -59,7 +58,8 @@
                                 <label class="sr-only" for="contact-email">Your email address</label>
                                   <input type="text" name="email" placeholder="Email..." class="contact-email form-control" id="contact-email">
 			                        </div>
-                              <div class="btn-group">
+                              <div class="btn-group form-group">
+                                <label class="sr-only" for="contact-project">Project</label>
                                   <button type="button" name="project" placeholder="Please select the project..." class="contact-project form-control btn btn-default dropdown-toggle"  data-toggle="dropdown" id="contact-project">
                                     Select project <span class="caret"></span>
                                   </button>

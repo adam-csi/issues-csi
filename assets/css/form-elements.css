@@ -45,7 +45,9 @@ label {
 
 
 button.btn {
-	height: 50px;
+		text-align: left;
+		height: 50px;
+		cursor: default;
     margin: 0;
     padding: 0 20px;
     vertical-align: middle;
@@ -61,18 +63,12 @@ button.btn {
     -moz-box-shadow: none; -webkit-box-shadow: none; box-shadow: none;
     -o-transition: all .3s; -moz-transition: all .3s; -webkit-transition: all .3s; -ms-transition: all .3s; transition: all .3s;
 }
-.btn {
-    cursor: default;
-    background-color: #FFF;
-    border-radius: 4px;
-    text-align: left;
-}
 
-.caret {
+/*.caret {
     position: absolute;
     right: 16px;
     top: 16px;
-}
+}*/
 
 .btn-default:hover, .btn-default:focus, .btn-default:active, .btn-default.active, .open .dropdown-toggle.btn-default {
     background-color: #FFF;
@@ -85,7 +81,7 @@ button.btn {
 .btn-group {width: 100%}
 .dropdown-menu {width: 100%;}
 
-button.btn:hover { opacity: 0.6; color: #fff; }
+/*button.btn:hover { opacity: 0.6; color: #fff; }*/
 
 button.btn:active { outline: 0; opacity: 0.6; color: #fff; -moz-box-shadow: none; -webkit-box-shadow: none; box-shadow: none; }
 
