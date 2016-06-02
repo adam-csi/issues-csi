@@ -10,7 +10,7 @@
 
         <!-- CSS -->
         <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:400,300,600">
-        <link rel="stylesheet" href="<link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">">
+        <link rel="stylesheet" href="assets/css/bootstrap.min.css">
 		    <link rel="stylesheet" href="assets/css/form-elements.css">
         <link rel="stylesheet" href="assets/css/style.css">
 
@@ -52,13 +52,29 @@
                             <div class="form-bottom contact-form">
 			                    <form role="form" action="assets/contact.php" method="post">
 			                    	<div class="form-group">
-                              <label class="sr-only" for="contact-subject">Subject</label>
-                                <input type="text" name="subject" placeholder="Subject..." class="contact-subject form-control" id="contact-subject">
+                              <label class="sr-only" for="contact-name">Name</label>
+                                <input type="text" name="name" placeholder="Name..." class="contact-name form-control" id="contact-name">
 			                        </div>
 			                        <div class="form-group">
                                 <label class="sr-only" for="contact-email">Your email address</label>
                                   <input type="text" name="email" placeholder="Email..." class="contact-email form-control" id="contact-email">
 			                        </div>
+                              <div class="btn-group">
+                                <label class="sr-only" for="contact-project">Project</label>
+                                  <button type="button" name="project" placeholder="Please select the project..." class="contact-project form-control btn btn-default dropdown-toggle"  data-toggle="dropdown" id="contact-project">
+                                    Select project <span class="caret"></span>
+                                  </button>
+                                  <ul class="dropdown-menu" role="menu">
+                                    <li><a href="#">ACAF 4.0</a></li>
+                                    <li><a href="#">ACAF 5.0</a></li>
+                                    <li><a href="#">Drift-SAR</a></li>
+                                  </ul>
+                              </div>
+                              <div class="form-group">
+                                <label class="sr-only" for="contact-shareurl">Share URL</label>
+                                  <input type="text" name="shareurl" placeholder="Please share your URL..." class="contact-shareurl form-control" id="contact-shareurl">
+			                        </div>
+
 			                        <div class="form-group">
 			                        	<label class="sr-only" for="contact-message">Issue</label>
 			                        	<textarea name="message" placeholder="Please describe the issue..." class="contact-message form-control" id="contact-message"></textarea>
