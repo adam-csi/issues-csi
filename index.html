@@ -17,10 +17,6 @@
 
         <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.5.6/angular.js"></script>
 
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/angular-formly/8.2.1/formly.js" charset="utf-8"></script>
-
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/angular-formly-templates-bootstrap/6.4.0/angular-formly-templates-bootstrap.js" charset="utf-8"></script>
-
         <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
         <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
         <!--[if lt IE 9]>
@@ -33,7 +29,7 @@
 
     </head>
 
-    <body ng-app="app" ng-controller="MainController as vm">
+    <body ng-app="validationApp" ng-controller="MainController as vm">
 
 		<!-- Top content -->
       <div class="container">
@@ -56,16 +52,18 @@
 
                   <div class="form-bottom contact-form">
 
-                        <form ng-submit="vm.onSubmit()" name="vm.form" method="post" action="send_form_email.php" novalidate>
+                        <form ng-submit="vm.onSubmit()" name="vm.form" id="mailgun" role="form" method="POST" novalidate>
 
                           <div class="form-group">
-                            <label class="sr-only" for="contact-name">Name</label>
-                              <input type="text" name="name" placeholder="Name..." class="contact-name form-control" id="contact-name">
+                            <label class="sr-only">Name</label>
+                              <input type="text" name="name" id="name" placeholder="Name..." class="form-control" required>
+                              <p ng-show="vm.form.name.$invalid && !vm.form.name.$pristine" class="help-block">You name is required.</p>
                           </div>
 
                           <div class="form-group">
-                              <label class="sr-only" for="contact-email">Your email address</label>
-                                <input type="text" name="email" placeholder="Email..." class="contact-email form-control" id="contact-email">
+                              <label class="sr-only">Your email address</label>
+                                <input type="text" name="email" id="email" placeholder="Email..." class="form-control" required>
+                                <p ng-show="userForm.email.$invalid && !userForm.email.$pristine" class="help-block">Enter a valid email.</p>
                           </div>
 
                           <div class="btn-group form-group">
@@ -82,12 +80,13 @@
                           </div>
 
                           <div class="form-group">
-                            <label class="sr-only" for="contact-shareurl">Share URL</label>
+                            <label class="sr-only">Share URL</label>
+                            <input type="text" name="email" placeholder="Share URL..." class="form-control" required>
                           </div>
 
                           <div class="form-group">
-                            <label class="sr-only" for="contact-message">Issue</label>
-                              <textarea name="message" placeholder="Please describe the issue..." class="contact-message form-control" id="contact-message"></textarea>
+                            <label class="sr-only">Issue</label>
+                              <textarea name="message" rows="6" placeholder="Please describe the issue..." class="form-control" required></textarea>
                           </div>
 
                           <div class="form-group">
@@ -95,8 +94,8 @@
                               <input type="text" name="antispam" placeholder="Your answer..." class="contact-antispam form-control" id="contact-antispam">
                           </div>
 
-                          <button type="submit" class="btn">Send message</button>
-      
+                          <button type="submit" class="btn" ng-disabled="userForm.$invalid">Send message</button>
+
                       </form>
 
                 </div>

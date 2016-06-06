@@ -1,43 +1,3 @@
-var mailgunURL;
-
-mailgunURL = window.location.protocol + "//" + window.location.hostname + '/ajax/mailgun.php';
-
-$('#mailgun').on('submit',function(e) {
-  e.preventDefault();
-
-  $('#mailgun *').fadeOut(200);
-  $('#mailgun').prepend('Your submission is being processed...');
-
-  $.ajax({
-    type     : 'POST',
-    cache    : false,
-    url      : mailgunURL,
-    data     : $(this).serialize(),
-    success  : function(data) {
-      responseSuccess(data);
-      console.log(data);
-    },
-    error  : function(data) {
-      console.log('Silent failure.');
-    }
-  });
-
-  return false;
-
-});
-
-function responseSuccess(data) {
-
-  data = JSON.parse(data);
-
-  if(data.status === 'success') {
-    $('#mailgun').html('Submission sent succesfully.');
-  } else {
-    $('#mailgun').html('Submission failed, please contact directly.');
-  }
-
-}
-
 if(empty($_POST) || !isset($_POST)) {
 
   ajaxResponse('error', 'Post cannot be empty.');
@@ -66,7 +26,9 @@ function ajaxResponse($status, $message, $data = NULL, $mg = NULL) {
     'status' => $status,
     'message' => $message,
     'data' => $data,
-    'mailgun' => $mgkey-bd01a75d1b6f1921fef2363eba21ab46($response);
+    'mailgun' => $mg
+    );
+  $output = json_encode($response);
   exit($output);
 }
 
@@ -84,7 +46,7 @@ function sendMailgun($data) {
 
   $config = array();
   $config['api_key'] = $api_key;
-  $config['api_url'] = $api_domain.'/messages';
+  $config['api_url'] = '$api_domain'/messages';
 
   $message = array();
   $message['from'] = $email;

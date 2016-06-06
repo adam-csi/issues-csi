@@ -1,30 +1,39 @@
+var mailgunURL;
 
-function doGet(e) {
-  return HtmlService.createHtmlOutputFromFile('index.html');
-}
+mailgunURL = window.location.protocol + "//" + window.location.hostname + '/assets/js/mailgun.php';
 
-function uploadFiles(form) {
+$('#mailgun').on('submit',function(e) {
+  e.preventDefault();
 
-  try {
+  $('#mailgun *').fadeOut(200);
+  $('#mailgun').prepend('Your submission is being processed...');
 
-    var dropbox = "File Uploads for issues.clearscienceinc.com";
-    var folder, folders = DriveApp.getFoldersByName(dropbox);
-
-    if (folders.hasNext()) {
-      folder = folders.next();
-    } else {
-      folder = DriveApp.createFolder(dropbox);
+  $.ajax({
+    type     : 'POST',
+    cache    : false,
+    url      : mailgunURL,
+    data     : $(this).serialize(),
+    success  : function(data) {
+      responseSuccess(data);
+      console.log(data);
+    },
+    error  : function(data) {
+      console.log('Silent failure.');
     }
+  });
 
-    var blob = form.myFile;
-    var file = folder.createFile(blob);
-    file.setDescription("Uploaded by " + form.myName);
+  return false;
 
-    return "File uploaded successfully " + file.getUrl();
+});
 
-  } catch (error) {
+function responseSuccess(data) {
 
-    return error.toString();
+  data = JSON.parse(data);
+
+  if(data.status === 'success') {
+    $('#mailgun').html('Submission sent succesfully.');
+  } else {
+    $('#mailgun').html('Submission failed, please contact directly.');
   }
 
 }
