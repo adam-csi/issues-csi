@@ -33,73 +33,81 @@
 
     </head>
 
-    <body ng-app="formlyApp" ng-controller="MainController as vm">
+    <body ng-app="app" ng-controller="MainController as vm">
 
 		<!-- Top content -->
-        <div class="container">
+      <div class="container">
 
-            <div class="inner-bg">
-                <div class="header">
-                        <a href="#" class="thumbnail">
-                          <img src="assets/img/csi_logo_crop.png" alt="CSI Logo">
-                        </a>
-                </div>
-
-                <div class="container col-md-8 col-md-offset-2">
-
-                    <div class="row">
-                      <div class="col-sm-6 col-sm-offset-3 form-box">
-                      	<div class="form-top">
-                  			  <h3>Please provide us details about your issue.</h3>
-                        </div>
-                          <div class="form-bottom contact-form">
-			                    <form ng-submit="vm.onSubmit()" name="vm.form" method="post" action="send_form_email.php" novalidate>
-
-                            <input type="submit" value="Upload File" onclick="this.value='Uploading..';google.script.run.withSuccessHandler(fileUploaded).uploadFiles(this.parentNode);return false;">
-
-                            <formly-form model="vm.model" fields="vm.fields" options="vm.options">
-			                        <button type="submit" class="btn btn-primary" ng-disabled="vm.form.$invalid">Submit issue</button>
-                              <button type="button" class="btn btn-default" ng-click="vm.options.resetModel()">Reset</button>
-                            </formly-form>
-                          </form>
-		                    </div>
-                        </div>
-                    </div>
-                </div>
+        <div class="inner-bg">
+          <div class="header">
+            <a href="#" class="thumbnail">
+              <img src="assets/img/csi_logo_crop.png" alt="CSI Logo">
+            </a>
           </div>
+
+          <div class="container">
+
+            <div class="row">
+              <h3>Please provide us details about your issue.</h3>
+               <p><span class="required">* </span>Required fields</p>
+            </div>
+
+                <div class="row col-sm-6 form-box">
+
+                  <div class="form-bottom contact-form">
+
+                        <form ng-submit="vm.onSubmit()" name="vm.form" method="post" action="send_form_email.php" novalidate>
+
+                          <div class="form-group">
+                            <label class="sr-only" for="contact-name">Name</label>
+                              <input type="text" name="name" placeholder="Name..." class="contact-name form-control" id="contact-name">
+                          </div>
+
+                          <div class="form-group">
+                              <label class="sr-only" for="contact-email">Your email address</label>
+                                <input type="text" name="email" placeholder="Email..." class="contact-email form-control" id="contact-email">
+                          </div>
+
+                          <div class="btn-group form-group">
+                              <label class="sr-only" for="contact-project">Project</label>
+                                <button type="button" name="project" placeholder="Please select the project..." class="form-control btn btn-default dropdown-toggle"  data-toggle="dropdown" id="contact-project">
+                                  Select project <span class="caret"></span>
+                                  <ul class="dropdown-menu" role="menu">
+                                    <li><a href="#">ACAF 4.0</a></li>
+                                    <li><a href="#">ACAF 5.0</a></li>
+                                    <li><a href="#">Drift-SAR</a></li>
+                                  </ul>
+                                </button>
+
+                          </div>
+
+                          <div class="form-group">
+                            <label class="sr-only" for="contact-shareurl">Share URL</label>
+                          </div>
+
+                          <div class="form-group">
+                            <label class="sr-only" for="contact-message">Issue</label>
+                              <textarea name="message" placeholder="Please describe the issue..." class="contact-message form-control" id="contact-message"></textarea>
+                          </div>
+
+                          <div class="form-group">
+                            <label for="contact-antispam">Antispam question: 7 + 5 = ?</label>
+                              <input type="text" name="antispam" placeholder="Your answer..." class="contact-antispam form-control" id="contact-antispam">
+                          </div>
+
+                          <button type="submit" class="btn">Send message</button>
+      
+                      </form>
+
+                </div>
+
+              </div>
+
+            </div>
+
+          </div>
+
         </div>
-
-    <script>
-  function doGet(e) {
-    return HtmlService.createHtmlOutputFromFile('index.html');
-  }
-
-  function uploadFiles(form) {
-
-    try {
-
-      var dropbox = "File Uploads for issues.clearscienceinc.com";
-      var folder, folders = DriveApp.getFoldersByName(dropbox);
-
-      if (folders.hasNext()) {
-        folder = folders.next();
-      } else {
-        folder = DriveApp.createFolder(dropbox);
-      }
-
-      var blob = form.myFile;
-      var file = folder.createFile(blob);
-      file.setDescription("Uploaded from issues.clearscienceinc.com");
-
-      return "File uploaded successfully " + file.getUrl();
-
-    } catch (error) {
-
-      return error.toString();
-    }
-
-  }
-</script>
 
       </body>
 
