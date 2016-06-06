@@ -35,8 +35,8 @@ function ajaxResponse($status, $message, $data = NULL, $mg = NULL) {
 function sendMailgun($data) {
 
   $api_key = 'key-bd01a75d1b6f1921fef2363eba21ab46';
-  $api_domain = 'https://api.mailgun.net/v3/mg.clearscienceinc.com';
-  $send_to = 'YOUR_EMAIL';
+  $api_domain = 'mg.clearscienceinc.com';
+  $send_to = 'adam@clearscienceinc.com';
 
   $name = $data['name'];
   $email = $data['email'];
@@ -46,7 +46,7 @@ function sendMailgun($data) {
 
   $config = array();
   $config['api_key'] = $api_key;
-  $config['api_url'] = '$api_domain'/messages';
+  $config['api_url'] = 'https://api.mailgun.net/v3/'.$api_domain.'/messages';
 
   $message = array();
   $message['from'] = $email;

@@ -1,6 +1,6 @@
 var mailgunURL;
 
-mailgunURL = window.location.protocol + "//" + window.location.hostname + '/assets/js/mailgun.php';
+mailgunURL = window.location.protocol + "//" + window.location.hostname + '/assets/mailgun.php';
 
 $('#mailgun').on('submit',function(e) {
   e.preventDefault();
