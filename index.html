@@ -92,7 +92,7 @@
                     <div class="form-group">
                         <label class="col-md-4 control-label">Upload File</label>
                         <div class="col-md-4 inputGroupContainer">
-                            <input type="file" ngf-select name="file" ng-model="picFile"><br>
+                            <input type="file" id="file" ngf-max-size="10M" name="file" ng-model="picFile"><br>
                             <button type="button" ng-click="uploadFile(picFile)">Upload</button>
                             <img ng-show="myForm.file.$valid" ngf-thumbnail="picFile" class="thumb">
                             <button ng-click="picFile = null" ng-show="picFile">Remove</button>

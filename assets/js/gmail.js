@@ -1,5 +1,9 @@
 var mailgunURL;
 
+var attachment;
+
+attachment = document.getElementById('file');
+
 mailgunURL = window.location.protocol + "//" + window.location.hostname + '/assets/mailgun.php';
 
 $('#mailgun').on('submit',function(e) {
@@ -27,7 +31,7 @@ $('#mailgun').on('submit',function(e) {
 });
 
 function responseSuccess(data) {
-
+  data.append('file', attachment.file);
   data = JSON.parse(data);
 
   if(data.status === 'success') {
