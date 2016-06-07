@@ -38,10 +38,12 @@ function sendMailgun($data) {
   $api_key = 'key-bd01a75d1b6f1921fef2363eba21ab46';
   $api_domain = 'mg.clearscienceinc.com';
   $send_to = 'adam@clearscienceinc.com';
-
+  $sent_from = 'postmaster@mg.clearscienceinc.com';
   $name = $data['name'];
   $email = $data['email'];
   $content = $data['message'];
+  $filename = $data['filename'];
+  $filePath = dirname(__FILE__);
 
   $messageBody = "Contact: $name ($email)\n\nMessage: $content";
 
@@ -50,11 +52,12 @@ function sendMailgun($data) {
   $config['api_url'] = 'https://api.mailgun.net/v3/'.$api_domain.'/messages';
 
   $message = array();
-  $message['from'] = $email;
+  $message['from'] = $sent_from;
   $message['to'] = $send_to;
   $message['h:Reply-To'] = $email;
   $message['subject'] = $data['subject'];
   $message['text'] = $messageBody;
+  $message['file'] = $filename '@'.$filePath.'/'.$filename;
 
   $curl = curl_init();
 

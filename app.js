@@ -2,66 +2,42 @@
     console.clear();
     'use strict';
 
-    var app = angular.module('app', []);
+    var app = angular.module('fileUpload', ['ngFileUpload']);
 
-    app.directive('fileModel', ['$parse', function($parse) {
-        return {
-            restrict: 'A',
-            link: function(scope, element, attrs) {
-                var model = $parse(attrs.fileModel);
-                var modelSetter = model.assign;
-
-                element.bind('change', function() {
-                    scope.$apply(function() {
-                        modelSetter(scope, element[0].files[0]);
-                    });
-                });
+    app.controller('MyCtrl', ['$scope', 'Upload', function($scope, Upload) {
+        // upload later on form submit or something similar
+        $scope.submit = function() {
+            if ($scope.form.file.$valid && $scope.file) {
+                $scope.upload($scope.file);
             }
         };
-    }]);
 
-    app.service('fileUpload', ['$http', function($http) {
-        this.uploadFileToUrl = function(file, uploadUrl) {
-            var fd = new FormData();
-            fd.append('file', file);
-            $http.post(uploadUrl, fd, {
-                    transformRequest: angular.identity,
-                    headers: {
-                        'Content-Type': undefined
-                    }
-                })
-                .success(function() {})
-                .error(function() {});
-        }
-    }]);
-
-    app.controller('myCtrl', ['$scope', 'fileUpload', function($scope, fileUpload) {
-
-        $scope.uploadFile = function() {
-            var file = $scope.myFile;
-            console.log('file is ');
-            console.dir(file);
-            var uploadUrl = "/fileUpload";
-            fileUpload.uploadFileToUrl(file, uploadUrl);
+        // upload on file select or drop
+        $scope.upload = function(file) {
+            Upload.upload({
+                url: 'upload/url',
+                data: {
+                    file: file,
+                    'username': $scope.username
+                }
+            }).then(function(resp) {
+                console.log('Success ' + resp.config.data.file.name + 'uploaded. Response: ' + resp.data);
+            }, function(resp) {
+                console.log('Error status: ' + resp.status);
+            }, function(evt) {
+                var progressPercentage = parseInt(100.0 * evt.loaded / evt.total);
+                console.log('progress: ' + progressPercentage + '% ' + evt.config.data.file.name);
+            });
         };
-
+        // // for multiple files:
+        // $scope.uploadFiles = function (files) {
+        //   if (files && files.length) {
+        //     for (var i = 0; i < files.length; i++) {
+        //       Upload.upload({..., data: {file: files[i]}, ...})...;
+        //     }
+        //     // or send them all together for HTML5 browsers:
+        //     Upload.upload({..., data: {file: files}, ...})...;
+        //   }
+        // }
     }]);
-
-
-    app.controller('MainController', function MainController() {
-        var vm = this;
-
-        vm.onSubmit = onSubmit;
-        vm.model = {};
-        vm.options = {};
-
-        function onSubmit() {
-            if (vm.form.$valid) {
-                vm.options;
-            }
-        }
-
-    });
-
-
 })();

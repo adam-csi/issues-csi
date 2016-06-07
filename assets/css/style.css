@@ -10,10 +10,13 @@ body {
 }
 .bg {
   background: url('../img/backgrounds/1.jpg') no-repeat center center;
-  /*width: 100%;*/
+  width: 100%;
   /*top:0;*/
   /*left:0;*/
-  z-index: -1;
+}
+#logo {
+	width: 50%;
+	z-index: -1;
 }
 .sticky {
     position: fixed;
@@ -66,6 +69,30 @@ h3 {
 ::-moz-selection { background: #d05a4e; color: #fff; text-shadow: none; }
 ::selection { background: #d05a4e; color: #fff; text-shadow: none; }
 
+.thumb {
+    width: 24px;
+    height: 24px;
+    float: none;
+    position: relative;
+    top: 7px;
+}
+
+form .progress {
+    line-height: 15px;
+}
+}
+
+.progress {
+    display: inline-block;
+    width: 100px;
+    border: 3px groove #CCC;
+}
+
+.progress div {
+    font-size: smaller;
+    background: orange;
+    width: 0;
+}
 
 /***** Top content *****/
 
