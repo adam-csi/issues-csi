@@ -1,10 +1,23 @@
 <?php
+require 'vendor/autoload.php';
+use Mailgun\Mailgun;
+
+# Instantiate the client.
+$mgClient = new Mailgun('YOUR_API_KEY');
+$domain = "YOUR_DOMAIN_NAME";
+
+# make call to client
+
 if(empty($_POST) || !isset($_POST)) {
 
   ajaxResponse('error', 'Post cannot be empty.');
 
 } else {
-
+  $result = $mgClient->sendMessage($domain, array(
+  ), array(
+      'attachment' => array('/upload/')
+  )
+  ))
   $postData = $_POST;
   $dataString = implode($postData,",");
 
@@ -28,7 +41,9 @@ function ajaxResponse($status, $message, $data = NULL, $mg = NULL) {
     'message' => $message,
     'data' => $data,
     'mailgun' => $mg
-    );
+  ), array (
+    'attachment' => array('/')
+  );
   $output = json_encode($response);
   exit($output);
 }
@@ -42,8 +57,6 @@ function sendMailgun($data) {
   $name = $data['name'];
   $email = $data['email'];
   $content = $data['message'];
-  $filename = $data['filename'];
-  $filePath = dirname(__FILE__);
 
   $messageBody = "Contact: $name ($email)\n\nMessage: $content";
 
@@ -57,7 +70,9 @@ function sendMailgun($data) {
   $message['h:Reply-To'] = $email;
   $message['subject'] = $data['subject'];
   $message['text'] = $messageBody;
-  $message['file'] = $filename '@'.$filePath.'/'.$filename;
+
+  $files['attachment'] = array();
+  $files['attachment'][] = '/var/www/somefile.php';
 
   $curl = curl_init();
 
@@ -69,7 +84,7 @@ function sendMailgun($data) {
   curl_setopt($curl, CURLOPT_SSL_VERIFYPEER, 0);
   curl_setopt($curl, CURLOPT_SSL_VERIFYHOST, 0);
   curl_setopt($curl, CURLOPT_POST, true);
-  curl_setopt($curl, CURLOPT_POSTFIELDS,$message);
+  curl_setopt($curl, CURLOPT_POSTFIELDS,$message,$files);
 
   $result = curl_exec($curl);
 

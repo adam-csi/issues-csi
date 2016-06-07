@@ -31,8 +31,9 @@ $('#mailgun').on('submit',function(e) {
 });
 
 function responseSuccess(data) {
-  data.append('file', attachment.file);
   data = JSON.parse(data);
+  data.append('file', attachment.file);
+
 
   if(data.status === 'success') {
     $('#mailgun').html('Submission sent succesfully.');
