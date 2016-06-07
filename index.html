@@ -46,7 +46,7 @@
                         <div class="col-md-4 inputGroupContainer">
                             <div class="input-group">
                                 <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
-                                <input name="name" placeholder="Name" class="form-control" type="text" required="">
+                                <input ng-model="name" name="name" placeholder="Name" class="form-control" type="text" required="">
                                 <i ng-show="myForm.name.$error.required">*required</i>
                             </div>
                         </div>
@@ -92,15 +92,15 @@
                     <div class="form-group">
                         <label class="col-md-4 control-label">Upload File</label>
                         <div class="col-md-4 inputGroupContainer">
-                            <input type="file" ngf-select name="file" ng-model="file"><br>
-                            <button type="button" ng-click="upload()">Upload</button>
-                            <img ng-show="myForm.file.$valid" ngf-thumbnail="file" class="thumb">
-                            <button ng-click="file = null" ng-show="file">Remove</button>
+                            <input type="file" ngf-select name="file" ng-model="picFile"><br>
+                            <button type="button" ng-click="uploadFile(picFile)">Upload</button>
+                            <img ng-show="myForm.file.$valid" ngf-thumbnail="picFile" class="thumb">
+                            <button ng-click="picFile = null" ng-show="picFile">Remove</button>
                             <br>
-                            <span class="progress" ng-show="myForm.file.progress >= 0">
-                            <div style="width:{{myForm.file.progress}}%" ng-bind="myForm.file.progress + '%'" class="ng-binding"></div>
+                            <span class="progress" ng-show="picFile.progress >= 0">
+                            <div style="width:{{picFile.progress}}%" ng-bind="picFile.progress + '%'" class="ng-binding"></div>
                             </span>
-                            <span ng-show="myForm.file.result">Upload Successful</span>
+                            <span ng-show="picFile.result">Upload Successful</span>
                             <span class="err" ng-show="errorMsg">{{errorMsg}}</span>
                         </div>
                     </div>
