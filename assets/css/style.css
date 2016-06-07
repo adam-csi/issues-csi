@@ -9,12 +9,11 @@ body {
     text-align: center;
 }
 .bg {
-  background: url('/assets/img/csi_logo_crop.jpg') no-repeat center center;
+  background: url('../img/backgrounds/1.jpg') no-repeat center center;
   /*width: 100%;*/
-  height: 350px; /*same height as jumbotron */
   /*top:0;*/
   /*left:0;*/
-  /*z-index: -1;*/
+  z-index: -1;
 }
 .sticky {
     position: fixed;
@@ -23,13 +22,6 @@ body {
     top: 0;
     z-index: 100;
     border-top: 0;
-}
-.jumbotron {
-  margin-bottom: 0px;
-  height: 350px;
-  color: white;
-  text-shadow: black 0.3em 0.3em 0.3em;
-  background:transparent;
 }
 strong { font-weight: 600; }
 
@@ -56,9 +48,13 @@ h3 {
     color: #615c58;
     line-height: 30px;
 }
-
+.not-active {
+   pointer-events: none;
+   cursor: default;
+	 border: none;
+}
 .imgcontainer {
-	width: 300px;
+	width: 300px
 	height: 200px;
 }
 
@@ -72,10 +68,6 @@ h3 {
 
 
 /***** Top content *****/
-
-.inner-bg {
-    padding: 40px 0 170px 0;
-}
 
 /*.top-content h1 { color: #fff; }*/
 
@@ -126,7 +118,5 @@ h3 {
 @media (min-width: 768px) and (max-width: 991px) {}
 
 @media (max-width: 767px) {
-
-	.inner-bg { padding: 40px 0 110px 0; }
 
 }

@@ -2,9 +2,9 @@
     console.clear();
     'use strict';
 
-    var validationApp = angular.module('validationApp', []);
+    var app = angular.module('app', []);
 
-    validationApp.controller('MainController', function MainController() {
+    app.controller('MainController', function MainController() {
       var vm = this;
 
       vm.onSubmit = onSubmit;
