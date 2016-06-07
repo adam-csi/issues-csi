@@ -1,108 +1,142 @@
 <!DOCTYPE html>
 <html lang="en">
 
-    <head>
+<head>
 
-        <meta charset="utf-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        <title>Clear Science Inc. Issues Form</title>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Clear Science Inc. Issues Form</title>
 
-        <!-- CSS -->
-        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:400,300,600">
-        <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css">
-		    <link rel="stylesheet" href="assets/css/form-elements.css">
-        <link rel="stylesheet" href="assets/css/style.css">
+    <!-- CSS -->
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+    <link rel="stylesheet" href="assets/css/form-elements.css">
+    <link rel="stylesheet" href="assets/css/style.css">
 
-        <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
-        <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
-        <!--[if lt IE 9]>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.5.6/angular.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/danialfarid-angular-file-upload/12.0.4/ng-file-upload.js"></script>
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
             <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
             <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
         <![endif]-->
 
-        <!-- Favicon and touch icons -->
-        <link rel="shortcut icon" href="assets/ico/favicon.png">
+    <!-- Favicon and touch icons -->
+    <link rel="shortcut icon" href="assets/ico/favicon.png">
 
-    </head>
+</head>
 
-    <body>
+<body ng-controller="MyCtrl" ng-app="fileUpload">
 
-		<!-- Top content -->
-        <div class="top-content">
+    <div class="bg">
+        <a href="#" class="not-active">
+            <img id="logo" src="assets/img/csi_logo_crop.png" alt="CSI Logo">
+        </a>
 
-            <div class="inner-bg">
-                <div class="container">
-                      <div class="jumbotron col-med-6">
-                        <a href="#" class="thumbnail">
-                          <img src="assets/img/csi_logo_crop.png" alt="CSI Logo">
-                        </a>
-                        <div class="col-sm-8 col-sm-offset-2 text">
-                          <!-- <h1>Clear Science Inc.</h1> -->
-                          <h1 class="subheading"><small><span class="label label-default">Issues Form</span></small></h1>
-                        </div>
-                      </div>
-
-                    <div class="row">
-                        <div class="col-sm-6 col-sm-offset-3 form-box">
-                        	<div class="form-top">
-                    			  <h3>Please provide us details about your issue.</h3>
-                          </div>
-                            <div class="form-bottom contact-form">
-			                    <form role="form" action="assets/contact.php" method="post">
-			                    	<div class="form-group">
-                              <label class="sr-only" for="contact-name">Name</label>
-                                <input type="text" name="name" placeholder="Name..." class="contact-name form-control" id="contact-name">
-			                        </div>
-			                        <div class="form-group">
-                                <label class="sr-only" for="contact-email">Your email address</label>
-                                  <input type="text" name="email" placeholder="Email..." class="contact-email form-control" id="contact-email">
-			                        </div>
-                              <div class="btn-group form-group">
-                                <label class="sr-only" for="contact-project">Project</label>
-                                  <button type="button" name="project" placeholder="Please select the project..." class="contact-project form-control btn btn-default dropdown-toggle"  data-toggle="dropdown" id="contact-project">
-                                    Select project <span class="caret"></span>
-                                  </button>
-                                  <ul class="dropdown-menu" role="menu">
-                                    <li><a href="#">ACAF 4.0</a></li>
-                                    <li><a href="#">ACAF 5.0</a></li>
-                                    <li><a href="#">Drift-SAR</a></li>
-                                  </ul>
-                              </div>
-                              <div class="form-group">
-                                <label class="sr-only" for="contact-shareurl">Share URL</label>
-                                  <input type="text" name="shareurl" placeholder="Please share your URL..." class="contact-shareurl form-control" id="contact-shareurl">
-			                        </div>
-
-			                        <div class="form-group">
-			                        	<label class="sr-only" for="contact-message">Issue</label>
-			                        	<textarea name="message" placeholder="Please describe the issue..." class="contact-message form-control" id="contact-message"></textarea>
-			                        </div>
-			                        <div class="form-group">
-			                        	<label for="contact-antispam">Antispam question: 7 + 5 = ?</label>
-			                        	<input type="text" name="antispam" placeholder="Your answer..." class="contact-antispam form-control" id="contact-antispam">
-			                        </div>
-			                        <button type="submit" class="btn">Send message</button>
-			                    </form>
-		                    </div>
+        <div class="container">
+            <form enctype="multipart/form-data" class="well form-horizontal" name="myForm" id="mailgun" role="form" method="POST" novalidate>
+                <fieldset>
+                    <legend>Please provide details about your issue.
+                        <p><span class="required">* </span>Required fields</p>
+                    </legend>
+                    <div class="form-group">
+                        <label class="col-md-4 control-label">Name</label>
+                        <div class="col-md-4 inputGroupContainer">
+                            <div class="input-group">
+                                <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
+                                <input name="name" placeholder="Name" class="form-control" type="text" required="">
+                                <i ng-show="myForm.name.$error.required">*required</i>
+                            </div>
                         </div>
                     </div>
-                </div>
-            </div>
 
+                    <div class="form-group">
+                        <label class="col-md-4 control-label">E-Mail</label>
+                        <div class="col-md-4 inputGroupContainer">
+                            <div class="input-group">
+                                <span class="input-group-addon"><i class="glyphicon glyphicon-envelope"></i></span>
+                                <input name="email" placeholder="E-Mail Address" class="form-control" type="text" required>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="col-md-4 control-label">Issue</label>
+                        <div class="col-md-4 inputGroupContainer">
+                            <div class="input-group">
+                                <span class="input-group-addon"><i class="glyphicon glyphicon-pencil"></i></span>
+                                <textarea class="form-control" rows="6" name="message" placeholder="Please describe the issue..." required></textarea>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="col-md-4 control-label" for="project">Project</label>
+                        <div class="col-md-4 selectContainer">
+                            <div class="input-group">
+                                <span class="input-group-addon"><i class="glyphicon glyphicon-list"></i></span>
+                                <select class="form-control selectpicker" name="project" id="project">
+                                    <option value=" ">Please select project</option>
+                                    <option value="acaf_4_0">ACAF 4.0</option>
+                                    <option value="acaf_5_0">ACAF 5.0</option>
+                                    <option value="drift_sar">Drift-SAR</option>
+                                </select>
+                                <br>
+                            </div>
+
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="col-md-4 control-label">Upload File</label>
+                        <div class="col-md-4 inputGroupContainer">
+                            <input type="file" name="uploaded_file"><br>
+                            <button type="button" ng-click="upload()">Upload</button>
+                            <img ng-show="myForm.file.$valid" ngf-thumbnail="file" class="thumb">
+                            <button ng-click="file = null" ng-show="file">Remove</button>
+                            <br>
+                            <span class="progress" ng-show="myForm.file.progress >= 0">
+                            <div style="width:{{myForm.file.progress}}%" ng-bind="myForm.file.progress + '%'" class="ng-binding"></div>
+                            </span>
+                            <span ng-show="myForm.file.result">Upload Successful</span>
+                            <span class="err" ng-show="errorMsg">{{errorMsg}}</span>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="col-md-4 control-label" for="share">Share URL</label>
+                        <div class="col-md-4 inputGroupContainer">
+                            <div class="input-group">
+                                <span class="input-group-addon"><i class="glyphicon glyphicon-globe"></i></span>
+                                <input type="share" name="share" placeholder="Share URL..." class="form-control" required>
+                            </div>
+                        </div>
+                    </div>
+
+                    <button type="submit" class="btn" ng-disabled="myForm.$invalid" ng-click="upload()">Submit</button>
+
+                </fieldset>
+            </form>
         </div>
+    </div>
+</body>
+
+<!-- Javascript -->
+<script src="https://code.jquery.com/jquery-2.2.4.js" integrity="sha256-iT6Q9iMJYuQiMWNd9lDyBUStIq/8PuOW33aOqmvFpqI=" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.5.6/angular-animate.js" charset="utf-8"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/angular-messages/1.5.6/angular-messages.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.5.6/angular-aria.js" charset="utf-8"></script>
+<!-- <script src="assets/js/jquery.backstretch.min.js"></script> -->
+<!-- <script src="assets/js/scripts.js"></script> -->
+<script src="app.js"></script>
+<script src="assets/js/gmail.js" charset="utf-8"></script>
 
 
-        <!-- Javascript -->
-        <script src="assets/js/jquery-1.11.1.min.js"></script>
-        <script src="assets/bootstrap/js/bootstrap.min.js"></script>
-        <script src="assets/js/jquery.backstretch.min.js"></script>
-        <script src="assets/js/scripts.js"></script>
-
-        <!--[if lt IE 10]>
+<!--[if lt IE 10]>
             <script src="assets/js/placeholder.js"></script>
         <![endif]-->
 
-    </body>
 
 </html>

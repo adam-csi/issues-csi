@@ -9,21 +9,22 @@ body {
     text-align: center;
 }
 .bg {
-  background: url('/assets/img/csi_logo_crop.png') no-repeat center center;
-  position: fixed;
+  background: url('../img/backgrounds/1.jpg') no-repeat center center;
   width: 100%;
-  height: 350px; /*same height as jumbotron */
-  top:0;
-  left:0;
-  z-index: -1;
+  /*top:0;*/
+  /*left:0;*/
 }
-
-.jumbotron {
-  margin-bottom: 0px;
-  height: 350px;
-  color: white;
-  text-shadow: black 0.3em 0.3em 0.3em;
-  background:transparent;
+#logo {
+	width: 50%;
+	z-index: -1;
+}
+.sticky {
+    position: fixed;
+    width: 100%;
+    left: 0;
+    top: 0;
+    z-index: 100;
+    border-top: 0;
 }
 strong { font-weight: 600; }
 
@@ -50,18 +51,50 @@ h3 {
     color: #615c58;
     line-height: 30px;
 }
+.not-active {
+   pointer-events: none;
+   cursor: default;
+	 border: none;
+}
+.imgcontainer {
+	width: 300px
+	height: 200px;
+}
 
-img { max-width: 100%; }
+.imgcontainer img {
+	width: 100%;
+	height: auto;
+}
 
 ::-moz-selection { background: #d05a4e; color: #fff; text-shadow: none; }
 ::selection { background: #d05a4e; color: #fff; text-shadow: none; }
 
+.thumb {
+    width: 24px;
+    height: 24px;
+    float: none;
+    position: relative;
+    top: 7px;
+}
+
+form .progress {
+    line-height: 15px;
+}
+}
+
+.progress {
+    display: inline-block;
+    width: 100px;
+    border: 3px groove #CCC;
+}
+
+.progress div {
+    font-size: smaller;
+    background: orange;
+    width: 0;
+}
 
 /***** Top content *****/
-
-.inner-bg {
-    padding: 40px 0 170px 0;
-}
 
 /*.top-content h1 { color: #fff; }*/
 
@@ -112,7 +145,5 @@ img { max-width: 100%; }
 @media (min-width: 768px) and (max-width: 991px) {}
 
 @media (max-width: 767px) {
-
-	.inner-bg { padding: 40px 0 110px 0; }
 
 }
