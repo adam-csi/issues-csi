@@ -18,7 +18,7 @@
                 url: '/assets/mailgun.php',
                 data: {
                     file: file,
-                    'name': $scope.name
+                    'name': $scope.form.name
                 }
             }).then(function(resp) {
                 console.log('Success ' + resp.config.data.file.name + 'uploaded. Response: ' + resp.data);

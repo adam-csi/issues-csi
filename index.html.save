@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>Clear Science Inc. Issues Form</title>
+
+        <!-- CSS -->
+        <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+		    <link rel="stylesheet" href="assets/css/form-elements.css">
+        <link rel="stylesheet" href="assets/css/style.css">
+
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/api-check/7.5.5/api-check.js" charset="utf-8"></script>
+
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.5.6/angular.js"></script>
+
+        <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+        <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+        <!--[if lt IE 9]>
+            <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+            <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+        <![endif]-->
+
+        <!-- Favicon and touch icons -->
+        <link rel="shortcut icon" href="assets/ico/favicon.png">
+
+    </head>
+
+    <body ng-app="validationApp" ng-controller="MainController as vm">
+
+		<!-- Top content -->
+      <div class="container">
+
+        <div class="inner-bg">
+          <div class="header">
+            <a href="#" class="thumbnail">
+              <img src="assets/img/csi_logo_crop.png" alt="CSI Logo">
+            </a>
+          </div>
+
+          <div class="container">
+
+            <div class="row">
+              <h3>Please provide us details about your issue.</h3>
+               <p><span class="required">* </span>Required fields</p>
+            </div>
+
+                <div class="row col-sm-6 form-box">
+
+                  <div class="form-bottom contact-form">
+
+                        <form ng-submit="vm.onSubmit()" name="vm.form" id="mailgun" role="form" method="POST" novalidate>
+
+                          <div class="form-group">
+                            <label class="sr-only" for="name">Name</label>
+                              <input type="name" name="name" id="name" placeholder="Name..." class="form-control" required>
+                              <p ng-show="vm.form.name.$invalid && !vm.form.name.$pristine" class="help-block">You name is required.</p>
+                          </div>
+
+                          <div class="form-group">
+                              <label class="sr-only" for="email">Your email address</label>
+                                <input type="email" name="email" id="email" placeholder="Email..." class="form-control" required>
+                                <p ng-show="userForm.email.$invalid && !userForm.email.$pristine" class="help-block">Enter a valid email.</p>
+                          </div>
+
+                          <div class="btn-group form-group">
+                              <label class="sr-only" for="project">Project</label><br>
+                                <select type="project" name="project" id="project">
+                                  Select project <span class="caret"></span>
+					
+
+                          </div>
+
+                          <div class="form-group" for="share">
+                            <label class="sr-only">Share URL</label>
+                            <input type="share" name="share" placeholder="Share URL..." class="form-control" required>
+                          </div>
+
+                          <div class="form-group">
+                            <label class="sr-only" for="message">Issue</label>
+                              <textarea id="message name="message" rows="6" placeholder="Please describe the issue..." class="form-control" required></textarea>
+                          </div>
+
+                          <div class="form-group">
+                            <label for="contact-antispam">Antispam question: 7 + 5 = ?</label>
+                              <input type="text" name="antispam" placeholder="Your answer..." class="contact-antispam form-control" id="contact-antispam">
+                          </div>
+
+                          <button type="submit" class="btn" ng-disabled="userForm.$invalid">Send message</button>
+
+                      </form>
+
+                </div>
+
+              </div>
+
+            </div>
+
+          </div>
+
+        </div>
+
+      </body>
+
+        <!-- Javascript -->
+        <script src="assets/js/jquery-1.11.1.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.5.6/angular-animate.js" charset="utf-8"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/angular-messages/1.5.6/angular-messages.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.5.6/angular-aria.js" charset="utf-8"></script>
+        <!-- <script src="assets/js/jquery.backstretch.min.js"></script> -->
+        <!-- <script src="assets/js/scripts.js"></script> -->
+        <script src="app.js"></script>
+        <script src="assets/js/gmail.js" charset="utf-8"></script>
+
+
+        <!--[if lt IE 10]>
+            <script src="assets/js/placeholder.js"></script>
+        <![endif]-->
+
+
+</html>
