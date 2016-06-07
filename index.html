@@ -36,7 +36,7 @@
         </a>
 
         <div class="container">
-            <form class="well form-horizontal" name="myForm" id="mailgun" role="form" method="POST" novalidate>
+            <form enctype="multipart/form-data" class="well form-horizontal" name="myForm" id="mailgun" role="form" method="POST" novalidate>
                 <fieldset>
                     <legend>Please provide details about your issue.
                         <p><span class="required">* </span>Required fields</p>
@@ -92,9 +92,7 @@
                     <div class="form-group">
                         <label class="col-md-4 control-label">Upload File</label>
                         <div class="col-md-4 inputGroupContainer">
-                            <div class="button input-group" ngf-select ng-model="file" name="file">Select</div>
-                            <span class="input-group-addon"><i class="glyphicon glyphicon-envelope"></i></span>
-                            <input type="file">
+                            <input type="file" name="uploaded_file"><br>
                             <button type="button" ng-click="upload()">Upload</button>
                             <img ng-show="myForm.file.$valid" ngf-thumbnail="file" class="thumb">
                             <button ng-click="file = null" ng-show="file">Remove</button>
@@ -104,7 +102,6 @@
                             </span>
                             <span ng-show="myForm.file.result">Upload Successful</span>
                             <span class="err" ng-show="errorMsg">{{errorMsg}}</span>
-
                         </div>
                     </div>
 
