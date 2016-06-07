@@ -15,7 +15,7 @@
         // upload on file select or drop
         $scope.upload = function(file) {
             Upload.upload({
-                url: 'upload',
+                url: '/assets/mailgun.php',
                 data: {
                     file: file,
                     'name': $scope.name
