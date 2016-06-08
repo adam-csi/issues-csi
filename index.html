@@ -10,11 +10,11 @@
 
     <!-- CSS -->
     <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
-    <link rel="stylesheet" href="assets/css/form-elements.css">
+    <!-- <link rel="stylesheet" href="assets/css/form-elements.css"> -->
     <link rel="stylesheet" href="assets/css/style.css">
 
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.5.6/angular.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/danialfarid-angular-file-upload/12.0.4/ng-file-upload.js"></script>
+    <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.5.6/angular.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/danialfarid-angular-file-upload/12.0.4/ng-file-upload.js"></script> -->
 
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -28,111 +28,22 @@
 
 </head>
 
-<body ng-controller="MyCtrl" ng-app="fileUpload">
+<body>
 
-    <div class="bg">
-        <a href="#" class="not-active">
-            <img id="logo" src="assets/img/csi_logo_crop.png" alt="CSI Logo">
-        </a>
+                    <script type="text/javascript" src="https://form.jotform.com/jsform/61593794639170"></script>
 
-        <div class="container">
-            <form enctype="multipart/form-data" class="well form-horizontal" name="myForm" id="mailgun" role="form" method="POST" novalidate>
-                <fieldset>
-                    <legend>Please provide details about your issue.
-                        <p><span class="required">* </span>Required fields</p>
-                    </legend>
-                    <div class="form-group">
-                        <label class="col-md-4 control-label">Name</label>
-                        <div class="col-md-4 inputGroupContainer">
-                            <div class="input-group">
-                                <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
-                                <input ng-model="name" name="name" placeholder="Name" class="form-control" type="text" required="">
-                                <i ng-show="myForm.name.$error.required">*required</i>
-                            </div>
-                        </div>
-                    </div>
+                    <!-- &copy; 2010<script>new Date().getFullYear()>2010&&document.write("-"+new Date().getFullYear());</script>, Clear Science Inc. All rights reserved. -->
 
-                    <div class="form-group">
-                        <label class="col-md-4 control-label">E-Mail</label>
-                        <div class="col-md-4 inputGroupContainer">
-                            <div class="input-group">
-                                <span class="input-group-addon"><i class="glyphicon glyphicon-envelope"></i></span>
-                                <input name="email" placeholder="E-Mail Address" class="form-control" type="text" required>
-                            </div>
-                        </div>
-                    </div>
 
-                    <div class="form-group">
-                        <label class="col-md-4 control-label">Issue</label>
-                        <div class="col-md-4 inputGroupContainer">
-                            <div class="input-group">
-                                <span class="input-group-addon"><i class="glyphicon glyphicon-pencil"></i></span>
-                                <textarea class="form-control" rows="6" name="message" placeholder="Please describe the issue..." required></textarea>
-                            </div>
-                        </div>
-                    </div>
 
-                    <div class="form-group">
-                        <label class="col-md-4 control-label" for="project">Project</label>
-                        <div class="col-md-4 selectContainer">
-                            <div class="input-group">
-                                <span class="input-group-addon"><i class="glyphicon glyphicon-list"></i></span>
-                                <select class="form-control selectpicker" name="project" id="project">
-                                    <option value=" ">Please select project</option>
-                                    <option value="acaf_4_0">ACAF 4.0</option>
-                                    <option value="acaf_5_0">ACAF 5.0</option>
-                                    <option value="drift_sar">Drift-SAR</option>
-                                </select>
-                                <br>
-                            </div>
 
-                        </div>
-                    </div>
-
-                    <div class="form-group">
-                        <label class="col-md-4 control-label">Upload File</label>
-                        <div class="col-md-4 inputGroupContainer">
-                            <input type="file" id="file" ngf-max-size="10M" name="file" ng-model="picFile"><br>
-                            <button type="button" ng-click="uploadFile(picFile)">Upload</button>
-                            <img ng-show="myForm.file.$valid" ngf-thumbnail="picFile" class="thumb">
-                            <button ng-click="picFile = null" ng-show="picFile">Remove</button>
-                            <br>
-                            <span class="progress" ng-show="picFile.progress >= 0">
-                            <div style="width:{{picFile.progress}}%" ng-bind="picFile.progress + '%'" class="ng-binding"></div>
-                            </span>
-                            <span ng-show="picFile.result">Upload Successful</span>
-                            <span class="err" ng-show="errorMsg">{{errorMsg}}</span>
-                        </div>
-                    </div>
-
-                    <div class="form-group">
-                        <label class="col-md-4 control-label" for="share">Share URL</label>
-                        <div class="col-md-4 inputGroupContainer">
-                            <div class="input-group">
-                                <span class="input-group-addon"><i class="glyphicon glyphicon-globe"></i></span>
-                                <input type="share" name="share" placeholder="Share URL..." class="form-control" required>
-                            </div>
-                        </div>
-                    </div>
-
-                    <button type="submit" class="btn" ng-disabled="myForm.$invalid" ng-click="upload()">Submit</button>
-
-                </fieldset>
-            </form>
-        </div>
-    </div>
 </body>
 
 <!-- Javascript -->
 <script src="https://code.jquery.com/jquery-2.2.4.js" integrity="sha256-iT6Q9iMJYuQiMWNd9lDyBUStIq/8PuOW33aOqmvFpqI=" crossorigin="anonymous"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.5.6/angular-animate.js" charset="utf-8"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/angular-messages/1.5.6/angular-messages.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.5.6/angular-aria.js" charset="utf-8"></script>
 <!-- <script src="assets/js/jquery.backstretch.min.js"></script> -->
-<!-- <script src="assets/js/scripts.js"></script> -->
-<script src="app.js"></script>
-<script src="assets/js/gmail.js" charset="utf-8"></script>
 
+<!-- <script src="assets/js/scripts.js"></script> -->
 
 <!--[if lt IE 10]>
             <script src="assets/js/placeholder.js"></script>

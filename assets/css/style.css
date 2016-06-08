@@ -9,15 +9,21 @@ body {
     text-align: center;
 }
 .bg {
-  background: url('../img/backgrounds/1.jpg') no-repeat center center;
+  background: url('../img/backgrounds/translucent.png') no-repeat center center;
   width: 100%;
   /*top:0;*/
   /*left:0;*/
 }
 #logo {
-	width: 50%;
+	width: 33%;
 	z-index: -1;
 }
+.panel-heading {
+	color: #FFFFFF;
+	background-color: #69D2E7;
+	background-color: rgba(105,210,231,0.7);
+}
+
 .sticky {
     position: fixed;
     width: 100%;
